@@ -1,0 +1,19 @@
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-scroll-left {
+    animation: scrollLeft 20s linear infinite;
+}
+
+@media (max-width: 640px) {
+    .cursor-follower {
+        display: none;
+    }
+}

@@ -1,94 +1,311 @@
-# CodeScribe AI - Intelligent Blogging Platform
+<div align="center">
 
-CodeScribe AI is a sophisticated full-stack blogging platform that integrates advanced AI capabilities for content
-moderation and enhancement. Built with a modern tech stack, it offers a secure, scalable, and user-friendly experience
-for bloggers, administrators, and readers.
+# 🚀 CodeScribe AI
 
-🌐 **Live Website**: [https://codescribeai.pages.dev](https://codescribeai.pages.dev)
+### *AI-Powered Blog Platform with Intelligent Content Moderation*
 
-## 🌟 Key Features
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.0-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![React](https://img.shields.io/badge/React-19.1.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Gemini AI](https://img.shields.io/badge/Gemini%20AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-### Core Functionality
+---
 
-- **AI-Powered Content Moderation**: Machine learning models automatically detect and filter inappropriate content
-- **Secure Authentication**: JWT-based authentication with email verification
-- **Rich Text Editor**: Intuitive blogging interface with media embedding support
-- **User Profiles**: Personalized dashboards with engagement metrics
-- **Admin Dashboard**: Comprehensive moderation and management tools (in progress)
-- **RESTful API**: Well-documented endpoints for external integration
+*A modern, full-stack blogging platform that leverages Google's Gemini AI for real-time content moderation, ensuring a safe and respectful community environment.*
 
-### Upcoming Features
+[Features](#-features) • [Architecture](#-architecture) • [Quick Start](#-quick-start) • [API Documentation](#-api-documentation) • [Contributing](#-contributing)
 
-- 🔔 Real-time notifications system
-- 📊 Advanced analytics dashboard
-- 🤖 AI-assisted content generation
+</div>
 
-## 🛠️ Technology Stack
+---
 
-| Layer          | Technologies                                     |
-|----------------|--------------------------------------------------|
-| **Backend**    | Java 17, Spring Boot 3.x, Spring Security, Maven |
-| **Frontend**   | React 18, Tailwind CSS, Axios, React Router      |
-| **AI Service** | Python 3.10, FastAPI, Transformers               |
-| **Database**   | MongoDB Atlas                                    |
-| **DevOps**     | Docker, GitHub Actions                           |
+## ✨ Features
+
+<table>
+<tr>
+<td width="50%">
+
+### 📝 **Blog Management**
+- Create, edit, and delete blog posts
+- Rich media support with image uploads
+- Cloudinary integration for optimized media delivery
+- User-specific blog management
+
+</td>
+<td width="50%">
+
+### 🤖 **AI Content Moderation**
+- Real-time content analysis using **Gemini 1.5 Flash**
+- Automatic detection of offensive/inappropriate language
+- Detailed explanations for flagged content
+- Retry logic with exponential backoff
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🔐 **Security & Authentication**
+- JWT-based stateless authentication
+- Secure HTTP-only cookie management
+- Role-based access control (Admin/User)
+- Email verification system
+
+</td>
+<td width="50%">
+
+### 🎨 **Modern UI/UX**
+- Responsive design with **Tailwind CSS**
+- Smooth animations using **Framer Motion**
+- AOS (Animate On Scroll) effects
+- Dark mode ready architecture
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🏗 Architecture
+
+```
+codescribe-ai/
+├── 📁 api-gateway/              # Spring Boot Backend (Java 17)
+│   ├── src/main/java/
+│   │   └── org.blogapplication/
+│   │       ├── controller/      # REST API endpoints
+│   │       ├── services/        # Business logic
+│   │       ├── dto/             # Data Transfer Objects
+│   │       ├── model/           # MongoDB entities
+│   │       ├── repository/      # Data access layer
+│   │       ├── security/        # JWT & Spring Security
+│   │       └── config/          # App configurations
+│   ├── Dockerfile
+│   └── pom.xml
+│
+├── 📁 web-app/                  # React Frontend (Vite)
+│   ├── src/
+│   │   ├── pages/               # Page components
+│   │   ├── components/          # Reusable UI components
+│   │   ├── api/                 # API integration layer
+│   │   ├── context/             # React Context providers
+│   │   ├── router/              # Route definitions
+│   │   └── constants/           # App constants
+│   └── package.json
+│
+├── 📁 blog-parser-service/      # Python Microservice
+│   ├── app.py                   # FastAPI application
+│   ├── Dockerfile
+│   └── requirements.txt
+│
+└── README.md
+```
+
+### Tech Stack Overview
+
+| Layer | Technology | Version |
+|-------|------------|---------|
+| **Backend API** | Spring Boot | 3.5.0 |
+| **Database** | MongoDB | Latest |
+| **Authentication** | JWT (JJWT) | 0.11.2 |
+| **Frontend** | React + Vite | 19.1.0 |
+| **Styling** | Tailwind CSS | 4.1.11 |
+| **Animations** | Framer Motion | 12.23.3 |
+| **AI Service** | FastAPI + Gemini | 1.5 Flash |
+| **Image Storage** | Cloudinary | 2.0.0 |
+| **API Docs** | SpringDoc OpenAPI | 2.5.0 |
+
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Java 17 JDK
-- Node.js 18+
-- Python 3.10
-- MongoDB instance (local or Atlas)
+- **Java 17+**
+- **Node.js 18+**
+- **Python 3.9+**
+- **MongoDB** (local or Atlas)
+- **Docker** (optional)
 
-### Installation
-
-```bash
-git clone https://github.com/MrPal28/CodeScribe-AI.git
-cd CodeScribe-A
-```
-
-# Backend setup
+### 1️⃣ Clone the Repository
 
 ```bash
-cd backend && mvn clean install
+git clone https://github.com/soumyadip-adak99/codescribe-ai.git
+cd codescribe-ai
 ```
 
-# Frontend setup
+### 2️⃣ Backend Setup (api-gateway)
 
 ```bash
-cd ../frontend && npm install
+cd api-gateway
+
+# Create environment variables file
+cp .env.example .env
+
+# Configure your environment variables:
+# - MONGODB_URI
+# - JWT_SECRET_KEY
+# - CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET
+# - EMAIL_USERNAME, EMAIL_PASSWORD
+# - GEMINI_API_KEY
+
+# Run the application
+./mvnw spring-boot:run
 ```
 
-# AI Service setup
+The API will be available at: `http://localhost:8080/app`
+
+### 3️⃣ Frontend Setup (web-app)
 
 ```bash
-cd ../ai-service && pip install -r requirements.txt
+cd web-app
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-### Running the Application
+The frontend will be available at: `http://localhost:5173`
 
-1. **Backend**: `mvn spring-boot:run` (http://localhost:8082)
-2. **Frontend**: `npm start` (http://localhost:3000)
-3. **AI Service**: `uvicorn app.main:app --reload` (http://localhost:8000)
+### 4️⃣ AI Service Setup (blog-parser-service)
+
+```bash
+cd blog-parser-service
+
+# Install dependencies
+pip install fastapi uvicorn google-generativeai python-dotenv
+
+# Set environment variable
+export GEMINI_API_KEY=your_api_key_here
+
+# Run the service
+python app.py
+```
+
+The AI service will be available at: `http://localhost:8000`
+
+---
+
+## 🐳 Docker Deployment
+
+```bash
+# Build and run all services
+docker-compose up --build
+
+# Or build individually
+docker build -t codescribe-api ./api-gateway
+docker build -t codescribe-ai-service ./blog-parser-service
+```
+
+---
 
 ## 📚 API Documentation
 
-Access interactive API docs when backend is running:
+### Authentication Endpoints
 
-- Swagger UI: [http://localhost:8080/app/swagger-ui.html](http://localhost:8082/swagger-ui.html)
-- OpenAPI Spec: [http://localhost:8080/app/v3/api-docs](http://localhost:8082/v3/api-docs)
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/app/public/register` | User registration |
+| `POST` | `/app/public/login` | User login |
+| `POST` | `/app/api/user/log-out` | User logout |
 
-## 🌐 Website Features
+### Blog Endpoints
 
-- **Account Creation**: Secure sign-up with email verification
-- **Post Creation**: Rich text editor with AI content analysis
-- **Post Discovery**: View all posts with filtering options
-- **User Dashboard**: Manage your content and profile
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/app/blog/user/blogs` | Get all blogs |
+| `POST` | `/app/blog/add` | Create new blog (multipart) |
+| `PUT` | `/app/blog/edit/blog/{id}` | Update blog |
+| `DELETE` | `/app/blog/delete-blog/{id}` | Delete blog |
 
-Visit our live platform: [https://codescribeai.pages.dev](https://codescribeai.pages.dev)
+### User Endpoints
 
-## 📧 Contact
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/app/api/user` | Get logged user details |
+| `POST` | `/app/api/user/upload-profile-image` | Upload profile image |
+| `PUT` | `/app/api/user/update/details` | Update user details |
+| `DELETE` | `/app/api/user/delete-account` | Delete user account |
 
-**Project Team** - io.codescribeai@gmail.com  
+### AI Moderation Endpoint
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/chat` | Analyze content for moderation |
+
+**Request Body:**
+```json
+{
+  "prompt": "Text content to analyze"
+}
+```
+
+**Response:**
+```json
+{
+  "input": "original text",
+  "moderation_result": "AI analysis result",
+  "is_inappropriate": false,
+  "flagged_words": []
+}
+```
+
+> 📖 **Interactive API Documentation** available at: `http://localhost:8080/app/swagger-ui.html`
+
+---
+
+## 🔧 Environment Variables
+
+### Backend (api-gateway)
+
+| Variable | Description |
+|----------|-------------|
+| `MONGODB_URI` | MongoDB connection string |
+| `JWT_SECRET_KEY` | Secret key for JWT signing |
+| `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name |
+| `CLOUDINARY_API_KEY` | Cloudinary API key |
+| `CLOUDINARY_API_SECRET` | Cloudinary API secret |
+| `EMAIL_USERNAME` | SMTP email username |
+| `EMAIL_PASSWORD` | SMTP email password |
+| `AI_API` | AI service endpoint URL |
+| `ADMIN_MAIL` | Default admin email |
+| `ADMIN_PASS` | Default admin password |
+
+### AI Service (blog-parser-service)
+
+| Variable | Description |
+|----------|-------------|
+| `GEMINI_API_KEY` | Google Gemini API key |
+| `PORT` | Service port (default: 8000) |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+### Made with ❤️ by [Soumyadip Adak](https://github.com/soumyadip-adak99)
+
+⭐ **Star this repo if you find it useful!** ⭐
+
+</div>
